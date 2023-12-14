@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>lab_3_Kostenko</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>lab_4_Kostenko</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7475,7 +7475,7 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=eb48d226">
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=74f16bc1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7483,15 +7483,35 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Лабораторна робота №3. Рекурсія. Стратегія “розділяй і володарюй”.</span>
-<span class="c1">#Author: Nikita Kostenko</span>
-<span class="c1">#Мета. Засвоїти технологію реалізації рекурсивних алгоритмів засобами Python і оцінку їх складності з використанням основної теореми рекурсії.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Лабораторна робота №4. Алгоритми пошуку. Стратегія “грубої сили”.</span>
+<span class="c1">#Мета. Засвоїти варіанти реалізації алгоритмів пошуку засобами Python і методи оцінки їх складності.</span>
+<span class="c1">#Author:Nikita Kostenko</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=08861c43-5a0a-451e-a96a-cb55c4c28896">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=26c3eca5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Cамостійна робота 1 </span>
+
+<span class="c1">#Завдання 1:"Оцінити асимптотичну складність алгоритму лінійного пошуку у О-нотації."</span>
+<span class="c1">#В-дь:</span>
+<span class="c1">#У лінійному пошуку алгоритм просто перебирає всі елементи послідовно, починаючи з першого і закінчуючи останнім, доки не знайде шуканий елемент або не перебере всі елементи.</span>
+<span class="c1">#Такий підхід гарантує, що найгірший випадок відбувається, коли елемент знаходиться в кінці списку, і вам потрібно перевірити всі елементи, що призводить до O(n) часу виконання.</span>
+<span class="c1">#Тому, асимптотична складність алгоритму лінійного пошуку в О-нотації = O(n)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ed4d267c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7499,15 +7519,61 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Завдання №1</span>
-<span class="c1">#Обчислення факторіалу за допомогою циклу for:</span>
-<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">result</span> <span class="o">*=</span> <span class="n">i</span>
-    <span class="k">return</span> <span class="n">result</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The factorial of </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Cамоcтійна робота 2</span>
+
+<span class="c1">#Завдання:1 "Оцінити асимптотичну складність алгоритму бінарного пошуку пошуку у О-нотації"</span>
+<span class="c1">#В-дь:</span>
+<span class="c1">#Кількість кроків, необхідних для пошуку, дорівнює log₂(n), де "n" - це розмір масиву. Тобто, на кожному кроці ми зменшуємо кількість елементів для пошуку вдвічі.</span>
+<span class="c1">#Тому асимптотична складність алгоритму бінарного пошуку - O(log n).</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=171d47b3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Завдання:2 "написати функцію, яка б могла повертати датафрейм з наступним складом полів: (“n”, “time”), де n – розмір масиву для функції `linear_searh();"</span>
+<span class="c1">#В-дь:</span>
+<span class="k">def</span> <span class="nf">linear_search</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">measure_linear_search_time</span><span class="p">(</span><span class="n">arr_size</span><span class="p">):</span>
+    <span class="c1"># Створюємо масив з випадковими значеннями</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">arr_size</span><span class="p">))</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">arr_size</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Шукаємо значення, якого немає у масиві</span>
+
+    <span class="c1"># Вимірюємо час виконання linear_search()</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">linear_search</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">execution_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+
+    <span class="k">return</span> <span class="n">arr_size</span><span class="p">,</span> <span class="n">execution_time</span>
+
+<span class="k">def</span> <span class="nf">generate_dataframe</span><span class="p">(</span><span class="n">n_values</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">n_values</span><span class="p">:</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">execution_time</span> <span class="o">=</span> <span class="n">measure_linear_search_time</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">execution_time</span><span class="p">])</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"n"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="c1"># Приклад використання:</span>
+<span class="n">n_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>  <span class="c1"># Розміри масиву, для яких вимірюємо час</span>
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">generate_dataframe</span><span class="p">(</span><span class="n">n_values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7520,87 +7586,110 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>The factorial of 10 is 3628800
+<pre>       n      time
+0     10  0.000010
+1    100  0.000017
+2   1000  0.000050
+3  10000  0.001361
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4a391680-937c-4fbf-a0b7-77cf6d7ee7de">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fbc3b279">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Завдання №2</span>
-<span class="c1">#Для алгоритму обчислення факторіалу циклом for, кількість кроків, які нам потрібно виконати, росте приблизно пропорційно самому числу n.</span>
-<span class="c1">#Наприклад, якщо n = 5, нам потрібно виконати 5 кроків (1 * 2 * 3 * 4 * 5). Якщо n = 10, то 10 кроків. </span>
-<span class="c1">#Тобто, кількість кроків лінійно залежить від розміру вхідного числа.</span>
-<span class="c1">#Отже, говорячи про асимптотичну складність, ми можемо сказати, що вона O(n), де O відноситься до "order of magnitude" (порядок величини). </span>
-<span class="c1">#Це просто означає, що час виконання зростає лінійно зі збільшенням n.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Завдання: 3 "написати функцію, яка б могла повертати датафрейм з наступним складом полів: (“n”, “time”), де n – розмір масиву для функції `bin_searh();"</span>
+<span class="c1">#В-дь:</span>
+<span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">mid</span>
+        <span class="k">elif</span> <span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">measure_binary_search_time</span><span class="p">(</span><span class="n">arr_size</span><span class="p">):</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">arr_size</span><span class="p">))</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">arr_size</span> <span class="o">+</span> <span class="mi">1</span>  
+
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">binary_search</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">execution_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+
+    <span class="k">return</span> <span class="n">arr_size</span><span class="p">,</span> <span class="n">execution_time</span>
+
+<span class="k">def</span> <span class="nf">generate_dataframe</span><span class="p">(</span><span class="n">n_values</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">n_values</span><span class="p">:</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">execution_time</span> <span class="o">=</span> <span class="n">measure_binary_search_time</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">execution_time</span><span class="p">])</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"n"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">n_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>  
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">generate_dataframe</span><span class="p">(</span><span class="n">n_values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0e77bf55-d9ff-4eeb-8136-6a5a2a3007e0">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>       n      time
+0     10  0.000004
+1    100  0.000002
+2   1000  0.000004
+3  10000  0.000005
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=27ad7ea2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Завдання №3</span>
-<span class="c1">#Коли ми використовуємо рекурсивний спосіб для знаходження факторіалу числа, кожен раз, коли ми викликаємо функцію, ми зменшуємо число на 1. </span>
-<span class="c1">#Рекурсія продовжується до тих пір, поки число не стане 0 або 1 (базовий випадок). </span>
-<span class="c1">#Отже, кількість рекурсивних викликів дорівнює n, і тому складність такого алгоритму буде O(n).</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Завдання: 5 "оцінити, який з двох алгоритмів є більш ефективним та в якому діапазоні розміру задачі."</span>
+<span class="c1">#В-дь:</span>
+<span class="c1">#Для невеликих розмірів масивів (n = 10, n = 100), обидва алгоритми (linear_search та binary_search) виконуються дуже швидко, і практично немає значущої різниці у часі виконання між ними.</span>
+<span class="c1">#Для середніх розмірів масивів (n = 1000), linear_search виконується трохи швидше, ніж binary_search.</span>
+<span class="c1">#Проте, навіть для великих розмірів масивів (n = 10000), обидва алгоритми виконуються дуже швидко, і різниця у часі виконання є дуже мала.</span>
+<span class="c1">#В практичних застосуваннях вибір між linear_search і binary_search може залежати від конкретного контексту та розміру даних. Для невеликих наборів даних (наприклад, менше n = 1000), linear_search може бути достатньо швидким.</span>
+<span class="c1">#Проте, якщо великі набори даних (наприклад, n = 10000), то binary_search може бути більш ефективним, хоча і в цьому випадку різниця в часі виконання невелика.</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=fbbfae92-235e-48ff-8008-e923ed8f6416">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=95918f39">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Завдання №4</span>
-<span class="c1">#Коли ми використовуємо рекурсію для обчислення n-го числа Фібоначчі, кожен виклик функції робить два нових виклики (один для n-1 та інший для n-2). </span>
-<span class="c1">#Це призводить до експоненційного збільшення кількості операцій при збільшенні n.</span>
-<span class="c1">#Таким чином, асимптотична складність у цьому випадку виражається як O(2^n).</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=011cd80e-e022-4f7b-b6a3-6eeceae5541c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Завдання №5</span>
-<span class="c1">#Алгоритм сортування злиттям, він може бути розглянутий через основну теорему рекурсії, яка визначає, що час виконання можна виразити як T(n) = 2T(n/2) + O(n). </span>
-<span class="c1">#Розв'язання цього рекурсивного рівняння підтверджує, що асимптотична складність сортування злиттям становить O(n log n).</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=52957cac">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Контрольнi запитання</span>
